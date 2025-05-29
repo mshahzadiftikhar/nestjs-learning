@@ -8,3 +8,53 @@ $ nest new nestjs-learning
 ```
 
 This will create a new project named nestjs-learning which will contains a set of files. 
+
+src/ - Main Application Code
+ - main.ts  
+ Entry point of the application (like index.js in other Node.js apps). It bootstraps the application using the root module (AppModule). And also specifies the port on which NestJS backend will run, 3000 in this case.
+ - app.module.ts  
+The root module of the application. Registers controllers and providers (services). Think of it like the glue that ties everything together.
+ - app.controller.ts   
+ A basic controller to handle incoming HTTP requests (e.g., GET /). NestJS uses decorators like @Controller and @Get for routing.
+  - app.service.ts  
+A service provider that contains business logic. Injected into the controller. Acts as a leyers between controller and DB.
+ - app.controller.spec.ts  
+ Class for writing test cases of controller
+
+ test/ - End-to-End Tests
+ - app.e2e-spec.ts  
+An end-to-end test example.Tests how the application behaves when running as a whole (HTTP requests, etc)
+
+## Resolve Dependencies
+
+```bash
+$ npm install
+```
+
+## Compile and run the project
+
+```bash
+# development
+$ npm run start
+
+# watch mode
+$ npm run start:dev
+
+# production mode
+$ npm run start:prod
+
+# After successfull run, nestJS will run at http://localhost:3000/
+```
+
+## Run tests
+
+```bash
+# unit tests
+$ npm run test
+
+# e2e tests
+$ npm run test:e2e
+
+# test coverage
+$ npm run test:cov
+```
