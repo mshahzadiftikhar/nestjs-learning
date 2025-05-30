@@ -27,13 +27,13 @@ class where we can define different utility methods like getAllTasks(), getTaskB
 - [src/tasks/tasks.service.spec.ts](../src/tasks/tasks.service.spec.ts)  
 Class for writing unit test cases
 
- - update in [app.module.ts](../src/app.module.ts)  
+ - [app.module.ts](../src/app.module.ts)  
  Service gets registered in the list of services defined:
     ```
     @Module({
-    imports: [],
-    controllers: [AppController],
-    providers: [AppService, TasksService],
+        imports: [],
+        controllers: [AppController],
+        providers: [AppService, TasksService],
     })
     ```
 
@@ -65,7 +65,7 @@ Example: http://localhost:3000/tasks
         ```
         @Get('allTasks')
         getAllTasks() {
-        return this.tasksService.getAllTasks();
+            return this.tasksService.getAllTasks();
         }
         ```
         Now, this method will respond to: http://localhost:3000/tasks/allTasks
@@ -73,12 +73,12 @@ Example: http://localhost:3000/tasks
 - [src/tasks/tasks.controller.spec.ts](../src/tasks/tasks.controller.spec.ts)  
 Class for writing unit test cases
 
- - update in [app.module.ts](../src/app.module.ts)  
+ - [app.module.ts](../src/app.module.ts)  
  Service gets registered in the list of services defined:
     ```
     @Module({
-    imports: [],
-    controllers: [AppController, TasksController],
-    providers: [AppService, TasksService],
+        imports: [],
+        controllers: [AppController, TasksController],
+        providers: [AppService, TasksService],
     })
     ```
