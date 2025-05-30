@@ -58,3 +58,11 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+## Adding New Module 
+Lets add a new module named task. Generally there are following things we need to create: 
+ - service
+ - controller
+ - module
+ - Unit tests for service and controller
+
+Details can be found in this file: [New Module Details](./docs/new-module.md)
