@@ -82,3 +82,28 @@ Class for writing unit test cases
     providers: [AppService, TasksService],
     })
     ```
+# Module
+In NestJS, a module is a class annotated with the `@Module()` decorator. It serves as an organizational unit that groups together related components — such as controllers, services, and providers. You can create a new module using following command:
+```nest generate module tasks
+CREATE src/tasks/tasks.module.ts (86 bytes)
+UPDATE src/app.module.ts (467 bytes)
+```
+
+Here's how you can specify controllers and services in the module file
+```
+@Module({
+  controllers: [TasksController],
+  providers: [TasksService],
+})
+export class TasksModule {}
+```
+
+and then we can import this module in app.moduls.ts file
+```
+@Module({
+  imports: [TasksModule],
+  controllers: [AppController, TasksController],
+  providers: [AppService, TasksService],
+})
+```
+

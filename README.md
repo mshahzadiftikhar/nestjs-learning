@@ -65,4 +65,9 @@ Lets add a new module named task. Generally there are following things we need t
  - module
  - Unit tests for service and controller
 
-Details can be found in this file: [New Module Details](./docs/new-module.md)
+Details can be found on this page: [New Module Details](./docs/new-module.md)
+
+## Integrating Postgres Database
+
+Lets access data from postgres database in our service layer.  
+Details can be found on this page: [Postgres Integration](./docs/postgres-integration.md)
