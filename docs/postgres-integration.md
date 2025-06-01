@@ -114,3 +114,14 @@ getById(id: number) {
     return this.tasksRepository.findOneBy({ id });
 }
 ```
+Utility functions exits for all basic CRUD (create, read, update, delete) operations. We can also write queries using this syntax for any complex requirements. Example:
+```
+getAllTablesQuery() {
+      return this.tasksRepository.query(`
+          SELECT table_name 
+          FROM information_schema.tables 
+          WHERE table_schema = 'public'
+      `);
+}
+```
+

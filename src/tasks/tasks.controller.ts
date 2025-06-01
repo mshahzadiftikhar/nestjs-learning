@@ -14,4 +14,9 @@ export class TasksController {
     getAllTasks_() {
         return this.tasksService.getAllTasks();
     }
+
+    @Get('allTables')
+    getAllTables() {
+        return this.tasksService.getAllTablesQuery();
+    }
 }

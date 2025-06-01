@@ -11,13 +11,21 @@ export class TasksService {
     private tasksRepository: Repository<Task>,
   ) {}
 
-    // select * from tasks 
+    // select * from task
     getAllTasks() {
         return this.tasksRepository.find();
     }
 
-    // select * from tasks where id = :id
+    // select * from task where id = :id
     getById(id: number) {
         return this.tasksRepository.findOneBy({ id });
-  }
+    }
+
+    getAllTablesQuery() {
+        return this.tasksRepository.query(`
+            SELECT table_name 
+            FROM information_schema.tables 
+            WHERE table_schema = 'public'
+        `);
+    }
 }
