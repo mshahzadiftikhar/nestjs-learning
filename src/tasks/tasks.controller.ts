@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { TasksService } from './tasks.service';
 
 @Controller('tasks')
@@ -18,5 +18,11 @@ export class TasksController {
     @Get('allTables')
     getAllTables() {
         return this.tasksService.getAllTablesQuery();
+    }
+
+    @Get(':id')
+    // @Get('allTasks/:id')
+    getById(@Param('id') id: string) {
+        return this.tasksService.getById(+id); // + converts to number
     }
 }

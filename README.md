@@ -71,3 +71,8 @@ Details can be found on this page: [New Module Details](./docs/new-module.md)
 
 Lets access data from postgres database in our service layer.  
 Details can be found on this page: [Postgres Integration](./docs/postgres-integration.md)
+
+## HTTP Requests
+
+Lets go through different HTTP requests like GET, POST, PUT, PATCH, DELETE  
+Details can be found on this page: [Http Requests](./docs/http-requests.md)
