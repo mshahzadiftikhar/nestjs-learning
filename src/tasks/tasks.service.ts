@@ -69,4 +69,16 @@ export class TasksService {
             task: task
         };
     }
+
+    async deleteTask(id: number) {
+        const task = await this.tasksRepository.findOneBy({ id });
+        if (!task) {
+           return { message: 'Task not found' };
+        }
+
+        await this.tasksRepository.delete(id);
+        return {
+            message: `Task with ID ${id} deleted successfully`,
+        };
+    }
 }

@@ -134,3 +134,25 @@ It allows partial replacements.
         return this.tasksService.updateTask(+id, patchTaskDTO);
     }
     ```
+### DELETE
+ - Add function in servcie 
+    ```
+    async deleteTask(id: number) {
+        const task = await this.tasksRepository.findOneBy({ id });
+        if (!task) {
+            return { message: 'Task not found' };
+        }
+
+        await this.tasksRepository.delete(id);
+        return {
+            message: `Task with ID ${id} deleted successfully`,
+        };
+    }
+    ```
+ - Add function in controller
+    ```
+    @Delete(':id')
+    deleteTask(@Param('id') id: string) {
+        return this.tasksService.deleteTask(+id);
+    }
+    ```
