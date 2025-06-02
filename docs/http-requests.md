@@ -78,3 +78,31 @@
     "name": "Example Task",
     "description": "This task was created from Postman"
     }
+
+### PUT
+Its used for full replacement of the object. Most of the modern APIs use PATCH or implement PUT in such a way that it allows partial replacement. We will implement the full replacement version of PUT here.
+ - Add DTO for updating tasks: [update.put.task.dto.ts](../src/tasks/dto/update.put.task.dto.ts)
+ - Add function is service:
+    ```
+    async replaceTask(id: number, putTaskDTO: PutTaskDto) {
+        const task = await this.tasksRepository.findOneBy({ id });
+        if (!task) {
+            return { message: 'Task not found' };
+        }
+
+        Object.assign(task, putTaskDTO);
+        const updatedTask = await this.tasksRepository.save(task);
+
+        return {
+            message: 'Task updated successfully',
+            task: updatedTask,
+        };
+    }
+    ```
+ - Add function in controller
+    ```
+    @Put(':id')
+    replaceTask(@Param('id') id: string, @Body() putTaskDTO: CreateTaskDto) {
+        return this.tasksService.replaceTask(+id, putTaskDTO);
+    }
+    ```
