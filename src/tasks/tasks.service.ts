@@ -45,12 +45,13 @@ export class TasksService {
             return { message: 'Task not found' };
         }
 
-        Object.assign(task, putTaskDTO);
-        const updatedTask = await this.tasksRepository.save(task);
+        task.name = putTaskDTO.name ?? task.name;
+        task.description = putTaskDTO.description ?? task.description;
 
+        this.tasksRepository.save(task);
         return {
-            message: 'Task updated successfully',
-            task: updatedTask,
+            message: 'Task Replaced successfully',
+            task: task
         };
     }
 }
