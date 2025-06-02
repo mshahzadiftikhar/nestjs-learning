@@ -28,6 +28,7 @@
         return this.tasksService.getById(+id); // + converts to number
     }
     ```
+    ---
 ### POST
  - Create DTO class for Task: [create.task.dto](../src/tasks/dto/create.task.dto.ts)
   - Add function in service class for saving task
@@ -78,6 +79,8 @@
     "name": "Example Task",
     "description": "This task was created from Postman"
     }
+    ```
+    ---
 
 ### PUT
 Its used for full replacement of the object. Most of the modern APIs use PATCH or implement PUT in such a way that it allows partial replacement. We will implement the full replacement version of PUT here.
@@ -107,6 +110,7 @@ Its used for full replacement of the object. Most of the modern APIs use PATCH o
         return this.tasksService.replaceTask(+id, putTaskDTO);
     }
     ```
+    ---
 ### PATCH
 
 It allows partial replacements.
@@ -134,6 +138,7 @@ It allows partial replacements.
         return this.tasksService.updateTask(+id, patchTaskDTO);
     }
     ```
+    ---
 ### DELETE
  - Add function in servcie 
     ```
