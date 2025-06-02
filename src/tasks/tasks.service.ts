@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Task } from './tasks.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { CreateTaskDto } from './dto/create.task.dto';
 
 @Injectable()
 export class TasksService {
@@ -28,4 +29,12 @@ export class TasksService {
             WHERE table_schema = 'public'
         `);
     }
+
+    addTask(craeteTaskDTO: CreateTaskDto) {
+        this.tasksRepository.save(craeteTaskDTO);
+        return {
+            message: "Task added successfully",
+            task: craeteTaskDTO
+        }
+    }   
 }
