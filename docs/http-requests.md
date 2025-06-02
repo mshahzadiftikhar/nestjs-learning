@@ -107,3 +107,30 @@ Its used for full replacement of the object. Most of the modern APIs use PATCH o
         return this.tasksService.replaceTask(+id, putTaskDTO);
     }
     ```
+### PATCH
+
+It allows partial replacements.
+ - Add DTO which allows values to be optional: [update.patch.task.dto.ts](../src/tasks/dto/update.patch.task.dto.ts)
+ - Add function in service
+    ```
+    async updateTask(id: number, patchTaskDTO: PatchTaskDto) {
+        const task = await this.tasksRepository.findOneBy({ id });
+        if (!task) {
+            return { message: 'Task not found' };
+        }
+
+        this.tasksRepository.merge(task, patchTaskDTO);
+        this.tasksRepository.save(task);
+        return {
+            message: 'Task updated successfully',
+            task: task
+        };
+    }
+    ```
+ - Add function in controller
+    ```
+    @Patch(':id')
+    updateTask(@Param('id') id: string, @Body() patchTaskDTO: PatchTaskDto) {
+        return this.tasksService.updateTask(+id, patchTaskDTO);
+    }
+    ```

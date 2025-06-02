@@ -4,6 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateTaskDto } from './dto/create.task.dto';
 import { PutTaskDto } from './dto/update.put.task.dto';
+import { PatchTaskDto } from './dto/update.patch.task.dto';
 
 @Injectable()
 export class TasksService {
@@ -51,6 +52,20 @@ export class TasksService {
         this.tasksRepository.save(task);
         return {
             message: 'Task Replaced successfully',
+            task: task
+        };
+    }
+
+    async updateTask(id: number, patchTaskDTO: PatchTaskDto) {
+        const task = await this.tasksRepository.findOneBy({ id });
+        if (!task) {
+            return { message: 'Task not found' };
+        }
+
+        this.tasksRepository.merge(task, patchTaskDTO);
+        this.tasksRepository.save(task);
+        return {
+            message: 'Task updated successfully',
             task: task
         };
     }
